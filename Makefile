@@ -6,11 +6,11 @@ default:
 
 services: mysql postgresql mongo
 
-mongo: mongo-2.2 mongo-3.0
+mongo: mongo-3.0
 
-mysql: mysql-5.5 mysql-5.7
+mysql: mysql-5.7
 
-postgresql: postgresql-9.0 postgresql-9.4
+postgresql: postgresql-9.4
 
 postgresql-9.4:
 	docker build -t upper/postgresql-9.4 postgresql/9.4
