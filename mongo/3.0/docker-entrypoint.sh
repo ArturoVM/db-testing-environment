@@ -13,6 +13,13 @@ if [ "$1" = 'mongod' ]; then
 		set -- $numa "$@"
 	fi
 
+	if [ ! -d "$DATADIR/journal" ]; then
+	(
+		sleep 5;
+		mongo "$MONGO_DATABASE" --eval "db.createUser({\"user\": \"$MONGO_USER\", \"pwd\": \"$MONGO_PASSWORD\", \"roles\": [{role: \"readWrite\", db:\"$MONGO_DATABASE\"}]}, {w: 1})";
+	) &
+  fi
+
 	exec gosu mongodb "$@"
 fi
 

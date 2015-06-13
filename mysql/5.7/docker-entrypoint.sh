@@ -55,7 +55,7 @@ if [ "$1" = 'mysqld' ]; then
 			-- What's done in this file shouldn't be replicated
 			--  or products like mysql-fabric won't work
 			SET @@SESSION.SQL_LOG_BIN=0;
-			
+
 			DELETE FROM mysql.user ;
 			CREATE USER 'root'@'%' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}' ;
 			GRANT ALL ON *.* TO 'root'@'%' WITH GRANT OPTION ;
@@ -89,6 +89,10 @@ if [ "$1" = 'mysqld' ]; then
 			exit 1
 		fi
 		echo 'MySQL init process done. Ready for start up.'
+		(
+			echo 'Importing MySQL zone time info...'; \
+			sleep 5 && mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
+		) &
 	fi
 
 	chown -R mysql:mysql "$DATADIR"

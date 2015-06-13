@@ -1,0 +1,4 @@
+.vagrant
+*.sw?
+.DS_Store
+*.log

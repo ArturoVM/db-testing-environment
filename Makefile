@@ -32,5 +32,5 @@ mongo-3.0:
 
 run: services
 	docker run -e "POSTGRES_USER=$(DB_USERNAME)" -e "POSTGRES_PASSWORD=$(DB_PASSWORD)" -p 5432:5432 upper/postgresql-9.4 >> postgresql.log 2>&1 &
-	docker run -e "MYSQL_ROOT_PASSWORD=$(DB_PASSWORD)" -p 3306:3306 upper/mysql-5.7 >> mysql.log 2>&1 &
-	docker run -p 27017:27017 upper/mongo-3.0 >> mongo.log 2>&1 &
+	docker run -e "MYSQL_USER=$(DB_USERNAME)" -e "MYSQL_PASSWORD=$(DB_PASSWORD)" -e "MYSQL_ALLOW_EMPTY_PASSWORD=1" -e "MYSQL_DATABASE=$(DB_USERNAME)" -p 3306:3306 upper/mysql-5.7 >> mysql.log 2>&1 &
+	docker run -e "MONGO_USER=$(DB_USERNAME)" -e "MONGO_PASSWORD=$(DB_PASSWORD)" -e "MONGO_DATABASE=$(DB_USERNAME)" -p 27017:27017 upper/mongo-3.0 >> mongo.log 2>&1 &
