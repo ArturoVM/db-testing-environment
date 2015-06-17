@@ -43,7 +43,7 @@ vagrant stop
 ```
 
 To turn it on again use `vagrant up --provision` or `vagrant up && vagrant
-provision`, after the first time, turning on the machines will take considerably
+provision`. After the first time, turning on the machines will take considerably
 less time.
 
 ## Using the testing environment
