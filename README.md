@@ -5,7 +5,7 @@
 * [Vagrant](https://www.vagrantup.com/)
 * [git](https://git-scm.com/)
 
-## Setting up an environment
+## Setting up a testing environment
 
 This should be pretty much straightforward:
 
@@ -43,5 +43,14 @@ vagrant stop
 ```
 
 To turn it on again use `vagrant up --provision` or `vagrant up && vagrant
-provision`, after the first time turning on the machines will take considerably
+provision`, after the first time, turning on the machines will take considerably
 less time.
+
+## Using the testing environment
+
+Set the `TEST_HOST` environment variable to `10.1.2.28` before running tests:
+
+```
+cd upper.io/db/postgresql
+TEST_HOST=10.1.2.28 make test
+```
