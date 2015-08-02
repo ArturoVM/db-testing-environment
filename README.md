@@ -42,10 +42,6 @@ cd db-testing-environment
 vagrant stop
 ```
 
-To turn it on again use `vagrant up --provision` or `vagrant up && vagrant
-provision`. After the first time, turning on the machines will take considerably
-less time.
-
 ## Using the testing environment
 
 Set the `TEST_HOST` environment variable to `10.1.2.28` before running tests:
